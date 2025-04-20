@@ -1,0 +1,33 @@
+.Header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #2b2b2b;
+  padding: 10px 20px;
+  color: white;
+}
+
+.logo {
+  height: 50px;
+}
+
+nav a {
+  color: white;
+  margin: 0 10px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+nav a.active {
+  border-bottom: 2px solid white;
+}
+
+button {
+  background-color: transparent;
+  border: none;
+  color: white;
+}
+
+button:hover {
+  text-decoration: underline;
+}

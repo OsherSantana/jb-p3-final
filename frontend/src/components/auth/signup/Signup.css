@@ -1,0 +1,43 @@
+.Signup {
+  max-width: 400px;
+  margin: 2rem auto;
+  padding: 2rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background: #fff;
+}
+
+.Signup h2 {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.Signup form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.Signup input {
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.Signup button {
+  margin-top: 1rem;
+  padding: 0.5rem;
+  background: #0077ff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+}
+
+.Signup button:hover {
+  background: #005fd1;
+}
+
+.Signup .error {
+  color: red;
+  font-size: 0.9rem;
+}

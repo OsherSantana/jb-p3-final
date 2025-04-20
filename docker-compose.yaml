@@ -1,0 +1,54 @@
+version: '3.8'
+
+services:
+  database:
+    container_name: vacation-compose-database
+    build:
+      context: ./database
+      dockerfile: Dockerfile
+    environment:
+      - MYSQL_ALLOW_EMPTY_PASSWORD=1
+      - MYSQL_DATABASE=vacation_tagging_system
+      - MYSQL_TCP_PORT=3306
+    ports:
+      - "3307:3306"
+    healthcheck:
+      test: [ "CMD", "mysqladmin", "ping", "-h", "127.0.0.1" ]
+      interval: 1m30s
+      timeout: 30s
+      retries: 5
+      start_period: 60s
+
+  backend:
+    container_name: vacation-compose-backend
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - 3000:3000
+    environment:
+      - NODE_ENV=compose
+      - IO_URL=ws://io:3003
+    depends_on:
+      database:
+        condition: service_healthy
+      io:
+        condition: service_started
+    volumes:
+      - ./uploads:/app/uploads
+
+  frontend:
+    container_name: vacation-compose-frontend
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - 5173:80
+
+  io:
+    container_name: vacation-compose-io
+    build:
+      context: ./io
+      dockerfile: Dockerfile
+    ports:
+      - 3003:3003

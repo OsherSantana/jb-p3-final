@@ -1,0 +1,24 @@
+{
+    "app": {
+        "port": "3050",
+        "name": "Vacation Tagging System",
+        "secret": "MySecretKey",
+        "jwtSecret": "MyJwtSecretKey"
+    },
+    "db": {
+        "host": "localhost",
+        "port": 3306,
+        "username": "root",
+        "password": "",
+        "database": "vacation_tagging_system"
+    },
+    "sequelize": {
+        "logging": true,
+        "sync": {
+            "force": false
+        }
+    },
+    "io": {
+        "url": "ws://127.0.0.1:3003"
+    }
+}
